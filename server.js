@@ -9,6 +9,8 @@ const db = new sqlite3.Database('./database.db');
 app.use(cors());
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 3000; // Usa el puerto de Railway
+
 // Crear tabla si no existe
 db.run(`CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY, name TEXT, description TEXT)`);
 
