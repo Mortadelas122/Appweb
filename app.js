@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/records';
+const apiUrl = 'https://appweb-production-f165.up.railway.app/records';
 
 async function fetchRecords() {
     const response = await fetch(apiUrl);
