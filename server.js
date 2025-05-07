@@ -9,13 +9,16 @@ const db = new sqlite3.Database('./database.db');
 app.use(cors());
 app.use(bodyParser.json());
 
+// Servir archivos estáticos desde la raíz
+app.use(express.static(path.join(__dirname)));
+
 const PORT = process.env.PORT || 8080; // Usa el puerto de Railway
 
 // Crear tabla si no existe
 db.run(`CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY, name TEXT, description TEXT)`);
 
 app.get('/', (req, res) => {
-    res.redirect('/records');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Obtener todos los registros
