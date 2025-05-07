@@ -14,6 +14,10 @@ const PORT = process.env.PORT || 8080; // Usa el puerto de Railway
 // Crear tabla si no existe
 db.run(`CREATE TABLE IF NOT EXISTS records (id INTEGER PRIMARY KEY, name TEXT, description TEXT)`);
 
+app.get('/', (req, res) => {
+    res.redirect('/records');
+});
+
 // Obtener todos los registros
 app.get('/records', (req, res) => {
     db.all('SELECT * FROM records', [], (err, rows) => {
